@@ -28,6 +28,7 @@ saha-sepet-projesi/
 ├── GOREV.md
 ├── GOREV-KOD-OKUMA.md
 └── README.md
+```
 
 ### Ana Sayfa
 ![Ana Sayfa](img/1.png)
