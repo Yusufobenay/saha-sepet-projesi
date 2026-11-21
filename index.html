@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Basketbol ekipmanlarını seç, sepetini yönet ve sipariş toplamını hesapla.">
+  <title>Saha | Basketbol Ekipmanları</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="announcement">1.000 TL ve üzeri basketbol ekipmanlarında %10 indirim 🏀</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Saha ana sayfa"><span class="brand-mark">s.</span><span>saha</span></a>
+    <nav aria-label="Ana menü"><a href="#products">Ekipmanlar</a><a href="#cart">Sepetim</a></nav>
+    <a class="header-cart" href="#cart">Sepet <span id="header-count">0</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">SAHA SENİN, EKİPMANIN HAZIR</span>
+        <h1>Maça çıkmadan<br><em>eksiklerini tamamla.</em></h1>
+        <p>Sokak maçları ve antrenmanlar için temel basketbol ekipmanlarını seç. Sepetini oluştur, indirimini anlık takip et.</p>
+        <a class="primary-link" href="#products">Ekipmanlara göz at <span>↗</span></a>
+      </div>
+      <div class="hero-art" aria-label="Basketbol ekipman illüstrasyonu">
+        <div class="sun"></div><div class="art-card card-back"></div>
+        <div class="shopping-bag"><div class="bag-handle"></div><span>court<br>ready.</span></div>
+        <div class="sparkle sparkle-one">✳</div><div class="sparkle sparkle-two">✦</div>
+        <div class="art-caption">streetball essentials<br><b>№ 01 / 2026</b></div>
+      </div>
+    </section>
+
+    <section class="section-heading" id="products">
+      <div><span class="eyebrow">EKİPMANLAR</span><h2>Sahanın favorileri</h2></div>
+      <p>Antrenman ve maç günü için temel seçimler.</p>
+    </section>
+
+    <section class="product-grid" aria-label="Ürün listesi">
+      <article class="product-card">
+        <div class="product-visual visual-cream" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #efe3d0;">
+          <span class="product-tag">ÇOK SEVİLEN</span>
+          <img src="img/ball.png" alt="Outdoor Basketbol Topu" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+        </div>
+        <div class="product-info"><div><h3>Outdoor Basketbol Topu</h3><p>No. 7 · Sokak ve salon</p></div><strong>₺ 450</strong></div>
+        <button class="add-button" data-add="ball">Sepete ekle <span>+</span></button>
+      </article>
+      <article class="product-card">
+        <div class="product-visual visual-lilac" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #dcd4e8;">
+          <img src="img/headband.png" alt="Spor Kafa Bandı" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+        </div>
+        <div class="product-info"><div><h3>Spor Kafa Bandı</h3><p>Ter emici · Esnek kumaş</p></div><strong>₺ 220</strong></div>
+        <button class="add-button" data-add="headband">Sepete ekle <span>+</span></button>
+      </article>
+      <article class="product-card">
+        <div class="product-visual visual-peach" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #f9d4b6;">
+          <img src="img/bottle.png" alt="Çelik Spor Matarası" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+        </div>
+        <div class="product-info"><div><h3>Çelik Spor Matarası</h3><p>800 ml · Isı yalıtımlı</p></div><strong>₺ 380</strong></div>
+        <button class="add-button" data-add="bottle">Sepete ekle <span>+</span></button>
+      </article>
+    </section>
+
+    <section class="cart-section" id="cart">
+      <div class="cart-title">
+        <div><span class="eyebrow">ALIŞVERİŞİN</span><h2>Sepetinin özeti</h2></div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button class="remove-button" id="clear-cart-button" type="button" style="display: none;">Sepeti temizle</button>
+          <span class="cart-count"><b id="cart-count">0</b> ürün</span>
+        </div>
+      </div>
+      <div class="cart-layout">
+        <div class="cart-items" id="cart-items">
+          <div class="empty-cart"><span>🏀</span><h3>Sepetin henüz boş</h3><p>Saha ekipmanlarını sepete ekleyerek başlayabilirsin.</p></div>
+        </div>
+        <aside class="summary-card">
+          <h3>Sipariş özeti</h3>
+          <div class="summary-line"><span>Ara toplam</span><strong id="subtotal">₺ 0,00</strong></div>
+          <div class="summary-line"><span>İndirim</span><strong class="discount" id="discount">- ₺ 0,00</strong></div>
+          <div class="summary-line"><span>KDV (%20)</span><strong id="tax">₺ 0,00</strong></div>
+          <div class="summary-line total"><span>Genel toplam</span><strong id="grand-total">₺ 0,00</strong></div>
+          <p class="discount-note" id="discount-note">₺ 1.000 ve üzeri alışverişte %10 indirim fırsatı.</p>
+          <button class="checkout-button" id="checkout-button">Siparişi tamamla <span>→</span></button>
+          <p class="secure-note">♡ Güvenli ve keyifli alışveriş</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">s.</span><span>saha</span></a><p>İyi ekipman, iyi oyun getirir.</p><span>© 2026 Saha</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
