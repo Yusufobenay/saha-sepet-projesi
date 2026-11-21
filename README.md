@@ -1,4 +1,5 @@
 # 🏀 Saha — Basketbol Ekipmanları Sepet Uygulaması
+🔗 **Canlı Demo:** [Saha Sepet Uygulamasını Görüntüle](https://yusufobenay.github.io/saha-sepet-projesi/)
 
 HTML, CSS ve JavaScript kullanılarak geliştirilmiş temel bir e-ticaret sepet uygulaması. Proje kapsamında mevcut JavaScript mantık ve hesaplama hataları giderilmiş, mağaza basketbol ekipmanları temasına uyarlanmış ve ek sepet özellikleri eklenmiştir.
 
