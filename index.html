@@ -10,9 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/app.js" defer></script>
+  <style>
+    body {
+      background-color: #ffffff;
+    }
+    .product-visual {
+      background-color: #f4f4f6 !important;
+      border-radius: 16px;
+      border: 1px solid #ececef;
+    }
+    .cart-item-visual, .cart-thumb {
+      background-color: #f4f4f6 !important;
+    }
+    .cart-item-visual img, .cart-thumb img {
+      mix-blend-mode: multiply;
+    }
+  </style>
 </head>
 <body>
-  <div class="announcement">1.000 TL ve üzeri basketbol ekipmanlarında %10 indirim 🏀</div>
+  <div class="announcement">1.000 TL ve üzeri basketbol ekipmanlarında %10 indirim</div>
   <header class="site-header">
     <a class="brand" href="#" aria-label="Saha ana sayfa"><span class="brand-mark">s.</span><span>saha</span></a>
     <nav aria-label="Ana menü"><a href="#products">Ekipmanlar</a><a href="#cart">Sepetim</a></nav>
@@ -42,23 +58,23 @@
 
     <section class="product-grid" aria-label="Ürün listesi">
       <article class="product-card">
-        <div class="product-visual visual-cream" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #efe3d0;">
+        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
           <span class="product-tag">ÇOK SEVİLEN</span>
-          <img src="img/ball.png" alt="Outdoor Basketbol Topu" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+          <img src="img/ball.png" alt="Outdoor Basketbol Topu" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
         </div>
         <div class="product-info"><div><h3>Outdoor Basketbol Topu</h3><p>No. 7 · Sokak ve salon</p></div><strong>₺ 450</strong></div>
         <button class="add-button" data-add="ball">Sepete ekle <span>+</span></button>
       </article>
       <article class="product-card">
-        <div class="product-visual visual-lilac" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #dcd4e8;">
-          <img src="img/headband.png" alt="Spor Kafa Bandı" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
+          <img src="img/headband.png" alt="Spor Kafa Bandı" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
         </div>
         <div class="product-info"><div><h3>Spor Kafa Bandı</h3><p>Ter emici · Esnek kumaş</p></div><strong>₺ 220</strong></div>
         <button class="add-button" data-add="headband">Sepete ekle <span>+</span></button>
       </article>
       <article class="product-card">
-        <div class="product-visual visual-peach" style="display: flex; align-items: center; justify-content: center; padding: 16px; background: #f9d4b6;">
-          <img src="img/bottle.png" alt="Çelik Spor Matarası" style="width: 190px; height: 190px; object-fit: contain; -webkit-mask-image: radial-gradient(circle, black 58%, transparent 95%); mask-image: radial-gradient(circle, black 58%, transparent 95%);">
+        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
+          <img src="img/bottle.png" alt="Çelik Spor Matarası" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
         </div>
         <div class="product-info"><div><h3>Çelik Spor Matarası</h3><p>800 ml · Isı yalıtımlı</p></div><strong>₺ 380</strong></div>
         <button class="add-button" data-add="bottle">Sepete ekle <span>+</span></button>
@@ -75,7 +91,13 @@
       </div>
       <div class="cart-layout">
         <div class="cart-items" id="cart-items">
-          <div class="empty-cart"><span>🏀</span><h3>Sepetin henüz boş</h3><p>Saha ekipmanlarını sepete ekleyerek başlayabilirsin.</p></div>
+          <div class="empty-cart">
+            <span style="display: inline-flex; justify-content: center; margin-bottom: 8px; color: #555;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </span>
+            <h3>Sepetin henüz boş</h3>
+            <p>Saha ekipmanlarını sepete ekleyerek başlayabilirsin.</p>
+          </div>
         </div>
         <aside class="summary-card">
           <h3>Sipariş özeti</h3>
@@ -85,7 +107,10 @@
           <div class="summary-line total"><span>Genel toplam</span><strong id="grand-total">₺ 0,00</strong></div>
           <p class="discount-note" id="discount-note">₺ 1.000 ve üzeri alışverişte %10 indirim fırsatı.</p>
           <button class="checkout-button" id="checkout-button">Siparişi tamamla <span>→</span></button>
-          <p class="secure-note">♡ Güvenli ve keyifli alışveriş</p>
+          <p class="secure-note" style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Güvenli ve hızlı alışveriş
+          </p>
         </aside>
       </div>
     </section>

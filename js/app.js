@@ -102,7 +102,9 @@ function renderCart() {
   if (cart.length === 0) {
     cartItemsElement.innerHTML = `
       <div class="empty-cart">
-        <span>🏀</span>
+        <span style="display: inline-flex; justify-content: center; margin-bottom: 8px; color: #555;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </span>
         <h3>Sepetin henüz boş</h3>
         <p>Saha ekipmanlarını sepete ekleyerek başlayabilirsin.</p>
       </div>
@@ -110,8 +112,8 @@ function renderCart() {
   } else {
     cartItemsElement.innerHTML = cart.map(item => `
       <div class="cart-row">
-        <div class="cart-thumb" style="padding: 0; overflow: hidden;">
-          <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="cart-thumb" style="padding: 6px; overflow: hidden; background: #f4f4f6;">
+          <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply;">
         </div>
         <div class="cart-product">
           <h4>${item.name}</h4>
