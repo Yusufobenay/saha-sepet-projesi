@@ -41,6 +41,7 @@ saha-sepet-projesi/
 ├── GOREV.md
 ├── GOREV-KOD-OKUMA.md
 └── README.md
+'''
 ## 🖼️ Ekran Görüntüleri
 
 ### 1. Ana Sayfa & Hero Alanı
