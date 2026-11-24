@@ -41,8 +41,9 @@ saha-sepet-projesi/
 ├── GOREV.md
 ├── GOREV-KOD-OKUMA.md
 └── README.md
-'''
-🖼️ Ekran Görüntüleri### 1. Ana Sayfa & Hero Alanı
+```
+🖼️ Ekran Görüntüleri
+### 1. Ana Sayfa & Hero Alanı
 ![Ana Sayfa ve Hero Alanı](img/1.png)
 
 ### 2. Ekipman Kataloğu & Filtreler
