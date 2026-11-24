@@ -42,9 +42,18 @@ saha-sepet-projesi/
 ├── GOREV-KOD-OKUMA.md
 └── README.md
 '''
-🖼️ Ekran Görüntüleri
-​1. Ana Sayfa & Hero Alanı
-​2. Ekipman Kataloğu & Filtreler
-​3. Ürün Kartları & Koleksiyon
-​4. Sepet Paneli & S.S.S.
-​5. Teslimat ve Ödeme Bilgileri
+🖼️ Ekran Görüntüleri### 1. Ana Sayfa & Hero Alanı
+![Ana Sayfa ve Hero Alanı](img/1.png)
+
+### 2. Ekipman Kataloğu & Filtreler
+![Ekipman Kataloğu ve Filtreler](img/2.png)
+
+### 3. Ürün Kartları & Koleksiyon
+![Ürün Kartları ve Koleksiyon](img/3.png)
+
+### 4. Sepet Paneli & S.S.S.
+![Sepet Paneli ve S.S.S.](img/4.png)
+
+### 5. Teslimat ve Ödeme Bilgileri
+![Teslimat ve Ödeme Bilgileri](img/5.png)
+​
