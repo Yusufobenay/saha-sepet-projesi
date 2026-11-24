@@ -3,120 +3,421 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Basketbol ekipmanlarını seç, sepetini yönet ve sipariş toplamını hesapla.">
-  <title>Saha | Basketbol Ekipmanları</title>
+  <meta name="description" content="Saha — Sokak ve salon basketbolu için performans ekipmanları.">
+  <title>SAHA. | Basketbol Performans Ekipmanları</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/app.js" defer></script>
-  <style>
-    body {
-      background-color: #ffffff;
-    }
-    .product-visual {
-      background-color: #f4f4f6 !important;
-      border-radius: 16px;
-      border: 1px solid #ececef;
-    }
-    .cart-item-visual, .cart-thumb {
-      background-color: #f4f4f6 !important;
-    }
-    .cart-item-visual img, .cart-thumb img {
-      mix-blend-mode: multiply;
-    }
-  </style>
 </head>
 <body>
-  <div class="announcement">1.000 TL ve üzeri basketbol ekipmanlarında %10 indirim</div>
+  <!-- Üst Duyuru Bandı -->
+  <div class="announcement">
+    <span>1.000 TL VE ÜZERİ SİPARİŞLERDE OTOMATİK %10 İNDİRİM</span>
+    <span class="dot"></span>
+    <span>EK %5 KUPON KODU: <strong>SAHA10</strong></span>
+  </div>
+
+  <!-- Header -->
   <header class="site-header">
-    <a class="brand" href="#" aria-label="Saha ana sayfa"><span class="brand-mark">s.</span><span>saha</span></a>
-    <nav aria-label="Ana menü"><a href="#products">Ekipmanlar</a><a href="#cart">Sepetim</a></nav>
-    <a class="header-cart" href="#cart">Sepet <span id="header-count">0</span></a>
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Saha ana sayfa">
+        <span class="brand-badge">S</span>
+        <span class="brand-name">SAHA<span>.</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="#catalog">Koleksiyon</a>
+        <a href="#features">Avantajlar</a>
+        <a href="#faq">S.S.S.</a>
+        <a href="#footer">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="search-input" placeholder="Ekipman ara..." aria-label="Ürün ara">
+        </div>
+
+        <button class="icon-btn" id="favorites-toggle" type="button" aria-label="Favorilerim" title="Favorilerim">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span class="badge" id="fav-count">0</span>
+        </button>
+
+        <button class="icon-btn" id="orders-toggle" type="button" aria-label="Siparişlerim" title="Siparişlerim">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <span class="badge" id="orders-count">0</span>
+        </button>
+
+        <button class="cart-trigger" id="open-cart-btn" type="button" aria-label="Sepeti aç">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Sepet</span>
+          <span class="cart-pill" id="header-count">0</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main>
+    <!-- Hero Bölümü -->
     <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">SAHA SENİN, EKİPMANIN HAZIR</span>
-        <h1>Maça çıkmadan<br><em>eksiklerini tamamla.</em></h1>
-        <p>Sokak maçları ve antrenmanlar için temel basketbol ekipmanlarını seç. Sepetini oluştur, indirimini anlık takip et.</p>
-        <a class="primary-link" href="#products">Ekipmanlara göz at <span>↗</span></a>
-      </div>
-      <div class="hero-art" aria-label="Basketbol ekipman illüstrasyonu">
-        <div class="sun"></div><div class="art-card card-back"></div>
-        <div class="shopping-bag"><div class="bag-handle"></div><span>court<br>ready.</span></div>
-        <div class="sparkle sparkle-one">✳</div><div class="sparkle sparkle-two">✦</div>
-        <div class="art-caption">streetball essentials<br><b>№ 01 / 2026</b></div>
-      </div>
-    </section>
-
-    <section class="section-heading" id="products">
-      <div><span class="eyebrow">EKİPMANLAR</span><h2>Sahanın favorileri</h2></div>
-      <p>Antrenman ve maç günü için temel seçimler.</p>
-    </section>
-
-    <section class="product-grid" aria-label="Ürün listesi">
-      <article class="product-card">
-        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
-          <span class="product-tag">ÇOK SEVİLEN</span>
-          <img src="img/ball.png" alt="Outdoor Basketbol Topu" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
-        </div>
-        <div class="product-info"><div><h3>Outdoor Basketbol Topu</h3><p>No. 7 · Sokak ve salon</p></div><strong>₺ 450</strong></div>
-        <button class="add-button" data-add="ball">Sepete ekle <span>+</span></button>
-      </article>
-      <article class="product-card">
-        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
-          <img src="img/headband.png" alt="Spor Kafa Bandı" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
-        </div>
-        <div class="product-info"><div><h3>Spor Kafa Bandı</h3><p>Ter emici · Esnek kumaş</p></div><strong>₺ 220</strong></div>
-        <button class="add-button" data-add="headband">Sepete ekle <span>+</span></button>
-      </article>
-      <article class="product-card">
-        <div class="product-visual" style="display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f6;">
-          <img src="img/bottle.png" alt="Çelik Spor Matarası" style="width: 185px; height: 185px; object-fit: contain; mix-blend-mode: multiply;">
-        </div>
-        <div class="product-info"><div><h3>Çelik Spor Matarası</h3><p>800 ml · Isı yalıtımlı</p></div><strong>₺ 380</strong></div>
-        <button class="add-button" data-add="bottle">Sepete ekle <span>+</span></button>
-      </article>
-    </section>
-
-    <section class="cart-section" id="cart">
-      <div class="cart-title">
-        <div><span class="eyebrow">ALIŞVERİŞİN</span><h2>Sepetinin özeti</h2></div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <button class="remove-button" id="clear-cart-button" type="button" style="display: none;">Sepeti temizle</button>
-          <span class="cart-count"><b id="cart-count">0</b> ürün</span>
-        </div>
-      </div>
-      <div class="cart-layout">
-        <div class="cart-items" id="cart-items">
-          <div class="empty-cart">
-            <span style="display: inline-flex; justify-content: center; margin-bottom: 8px; color: #555;">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-            </span>
-            <h3>Sepetin henüz boş</h3>
-            <p>Saha ekipmanlarını sepete ekleyerek başlayabilirsin.</p>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-tag">2026 STREETBALL KOLEKSİYONU</span>
+          <h1>Sokaktan salona.<br><span>Oyununu yükselt.</span></h1>
+          <p>Açık saha betonuna ve yüksek tempolu antrenmanlara dayanıklı seçili basketbol ekipmanları. Sepetini oluştur, indirimini anlık takip et.</p>
+          <div class="hero-buttons">
+            <a class="btn-primary" href="#catalog">
+              Koleksiyonu Keşfet
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <button class="btn-secondary" id="hero-cart-btn" type="button">Sepeti Görüntüle</button>
+          </div>
+          <div class="hero-stats">
+            <div><strong>9+</strong><span>Seçili Ekipman</span></div>
+            <div><strong>24 Saat</strong><span>Hızlı Kargo</span></div>
+            <div><strong>%10</strong><span>Otomatik İndirim</span></div>
           </div>
         </div>
-        <aside class="summary-card">
-          <h3>Sipariş özeti</h3>
-          <div class="summary-line"><span>Ara toplam</span><strong id="subtotal">₺ 0,00</strong></div>
-          <div class="summary-line"><span>İndirim</span><strong class="discount" id="discount">- ₺ 0,00</strong></div>
-          <div class="summary-line"><span>KDV (%20)</span><strong id="tax">₺ 0,00</strong></div>
-          <div class="summary-line total"><span>Genel toplam</span><strong id="grand-total">₺ 0,00</strong></div>
-          <p class="discount-note" id="discount-note">₺ 1.000 ve üzeri alışverişte %10 indirim fırsatı.</p>
-          <button class="checkout-button" id="checkout-button">Siparişi tamamla <span>→</span></button>
-          <p class="secure-note" style="display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            Güvenli ve hızlı alışveriş
-          </p>
-        </aside>
+
+        <div class="hero-visual">
+          <img src="img/hero.jpg" alt="Saha Basketbol Koleksiyonu" class="hero-featured-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- Katalog ve Filtreler -->
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="eyebrow">EKİPMAN KATALOĞU</span>
+            <h2 id="catalog-title">Tüm Ekipmanlar</h2>
+          </div>
+
+          <div class="catalog-controls">
+            <div class="category-pills" id="category-pills" role="tablist" aria-label="Kategoriler">
+              <button class="pill active" data-category="all" type="button">Tümü</button>
+              <button class="pill" data-category="top" type="button">Toplar</button>
+              <button class="pill" data-category="aksesuar" type="button">Aksesuar</button>
+              <button class="pill" data-category="ekipman" type="button">Çanta & Matara</button>
+              <button class="pill" data-category="giyim" type="button">Giyim & Ayakkabı</button>
+            </div>
+
+            <select id="sort-select" class="sort-select" aria-label="Sıralama">
+              <option value="featured">Sırala: Önerilen</option>
+              <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+              <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Güven / Avantaj Bandı -->
+    <section class="features-section" id="features">
+      <div class="container features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <h3>Aynı Gün Kargo</h3>
+          <p>Saat 16:00'ya kadar verilen tüm basketbol ekipmanı siparişleri aynı gün yola çıkar.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Saha Dayanıklılığı</h3>
+          <p>Asfalt ve kapalı salon zeminlerinde test edilmiş, uzun ömürlü performans malzemeleri.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          </div>
+          <h3>14 Gün Kolay İade</h3>
+          <p>Kullanılmamış tüm ürünlerde 14 gün içerisinde koşulsuz değişim ve iade garantisi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sıkça Sorulan Sorular (Akordeon) -->
+    <section class="faq-section" id="faq">
+      <div class="container faq-container">
+        <div class="faq-header">
+          <span class="eyebrow">MERAK EDİLENLER</span>
+          <h2>Sıkça Sorulan Sorular</h2>
+        </div>
+
+        <div class="faq-list" id="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Basketbol topları şişik mi gönderiliyor?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Kargo sırasında formunun bozulmaması için toplarımız ideal basınçta, koruyucu özel kutusu içerisinde şişik ve doğrudan sahaya çıkmaya hazır şekilde gönderilir.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Ayakkabı ve giyim ürünlerinde beden değişimi nasıl yapılır?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Ürünü teslim aldıktan sonra 14 gün içinde kullanılmamış ve etiketi çıkarılmamış olması şartıyla ücretsiz kargo koduyla beden veya numara değişimi yapabilirsin.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>1.000 TL üzeri %10 indirim ve SAHA10 kuponu birlikte çalışır mı?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Evet. Sepet tutarın 1.000 TL'yi geçtiğinde %10 otomatik indirim uygulanır; ardından sepet özetine SAHA10 kodunu girerek ek %5 indirim daha kazanabilirsin.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Siparişim kaç günde elime ulaşır?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Hafta içi saat 16:00'ya kadar verilen siparişler aynı gün kargoya teslim edilir. İstanbul içine 1 iş günü, diğer illere 1–3 iş günü içinde teslimat sağlanır.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer><a class="brand" href="#"><span class="brand-mark">s.</span><span>saha</span></a><p>İyi ekipman, iyi oyun getirir.</p><span>© 2026 Saha</span></footer>
+  <!-- Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="#">
+          <span class="brand-badge">S</span>
+          <span class="brand-name">SAHA<span>.</span></span>
+        </a>
+        <p>Sokak basketbolu ve günlük antrenmanlar için sade, dayanıklı performans ekipmanları.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Mağaza</h4>
+        <a href="#catalog">Tüm Ekipmanlar</a>
+        <a href="#catalog">Basketbol Topları</a>
+        <a href="#catalog">Giyim & Ayakkabı</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Destek</h4>
+        <a href="#features">Kargo & Teslimat</a>
+        <a href="#faq">Sıkça Sorulan Sorular</a>
+        <a href="#catalog">Kupon: SAHA10</a>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Yeni Ekipmanlardan Haberdar Ol</h4>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="E-posta adresin" required>
+          <button type="submit">Katıl</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Saha Basketbol Ekipmanları. Tüm hakları saklıdır.</span>
+      <span>İstanbul, Türkiye</span>
+    </div>
+  </footer>
+
+  <!-- Sağdan Açılan Sepet Paneli (Drawer) -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Alışveriş Sepeti">
+    <div class="drawer-header">
+      <div>
+        <h3>Sepetim</h3>
+        <span class="drawer-sub"><b id="cart-count">0</b> ürün</span>
+      </div>
+      <div class="drawer-header-actions">
+        <button class="text-btn" id="clear-cart-button" type="button" style="display: none;">Temizle</button>
+        <button class="close-btn" id="close-cart-btn" type="button" aria-label="Sepeti kapat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- İndirim İlerleme Çubuğu -->
+    <div class="discount-progress-wrap">
+      <p id="discount-note">₺ 1.000 ve üzeri alışverişte %10 indirim fırsatı.</p>
+      <div class="progress-track">
+        <div class="progress-fill" id="discount-progress"></div>
+      </div>
+    </div>
+
+    <!-- Sepet Ürünleri -->
+    <div class="drawer-body" id="cart-items"></div>
+
+    <!-- Sepet Alt Özet -->
+    <div class="drawer-footer">
+      <form class="coupon-form" id="coupon-form">
+        <input type="text" id="coupon-input" placeholder="Kupon kodu (SAHA10)" aria-label="Kupon kodu">
+        <button type="submit">Uygula</button>
+      </form>
+
+      <div class="summary-rows">
+        <div class="summary-row"><span>Ara toplam</span><strong id="subtotal">₺ 0,00</strong></div>
+        <div class="summary-row"><span>Otomatik İndirim (%10)</span><strong class="discount-val" id="discount">- ₺ 0,00</strong></div>
+        <div class="summary-row" id="coupon-row" style="display: none;"><span>Kupon (SAHA10 - %5)</span><strong class="discount-val" id="coupon-discount">- ₺ 0,00</strong></div>
+        <div class="summary-row"><span>KDV (%20)</span><strong id="tax">₺ 0,00</strong></div>
+        <div class="summary-row total-row"><span>Genel Toplam</span><strong id="grand-total">₺ 0,00</strong></div>
+      </div>
+
+      <button class="checkout-button" id="checkout-button" type="button">
+        Ödemeye Geç
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+      <p class="secure-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        256-bit SSL güvenli ödeme altyapısı
+      </p>
+    </div>
+  </aside>
+
+  <!-- Ürün Detay Penceresi (Modal) -->
+  <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card modal-scrollable">
+      <button class="close-btn modal-close" id="close-modal-btn" type="button" aria-label="Pencereyi kapat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- 1 Adımlı Teslimat & Ödeme Ekranı (Mini Checkout) -->
+  <div class="modal" id="checkout-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card checkout-modal-card modal-scrollable">
+      <button class="close-btn modal-close" id="close-checkout-btn" type="button" aria-label="Ödeme penceresini kapat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <div class="checkout-header">
+        <span class="eyebrow">GÜVENLİ ÖDEME</span>
+        <h3>Teslimat ve Ödeme Bilgileri</h3>
+      </div>
+
+      <div class="checkout-summary-bar">
+        <span><b id="checkout-items-count">0</b> ürün seçildi</span>
+        <strong id="checkout-total-amount">₺ 0,00</strong>
+      </div>
+
+      <form id="checkout-form" class="checkout-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customer-name">Ad Soyad</label>
+            <input type="text" id="customer-name" placeholder="Örn. Kerem Yılmaz" required>
+          </div>
+          <div class="form-group">
+            <label for="customer-phone">Telefon</label>
+            <input type="tel" id="customer-phone" placeholder="05XX XXX XX XX" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customer-city">İl</label>
+            <select id="customer-city" required>
+              <option value="İstanbul">İstanbul</option>
+              <option value="Ankara">Ankara</option>
+              <option value="İzmir">İzmir</option>
+              <option value="Bursa">Bursa</option>
+              <option value="Antalya">Antalya</option>
+              <option value="Eskişehir">Eskişehir</option>
+              <option value="Diğer">Diğer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="customer-district">İlçe</label>
+            <input type="text" id="customer-district" placeholder="Örn. Kadıköy" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customer-address">Açık Adres</label>
+          <textarea id="customer-address" rows="2" placeholder="Mahalle, sokak, bina ve daire numarası" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Ödeme Yöntemi</label>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="Kredi / Banka Kartı" checked>
+              <span>Kredi / Banka Kartı</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="Kapıda Ödeme">
+              <span>Kapıda Ödeme</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="card-fields" id="card-fields">
+          <div class="form-group">
+            <label for="card-number">Kart Numarası</label>
+            <input type="text" id="card-number" placeholder="4543 •••• •••• 1234" maxlength="19" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-expiry">Son Kullanma</label>
+              <input type="text" id="card-expiry" placeholder="AA/YY" maxlength="5" required>
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV</label>
+              <input type="text" id="card-cvv" placeholder="123" maxlength="3" required>
+            </div>
+          </div>
+        </div>
+
+        <button class="checkout-button" type="submit">
+          Siparişi Onayla
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sipariş Onay Penceresi -->
+  <div class="modal" id="order-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card order-success-card">
+      <div class="success-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3>Siparişin Alındı</h3>
+      <p id="order-summary-text">Siparişin başarıyla oluşturuldu ve hazırlık aşamasına alındı.</p>
+      <div class="order-code" id="order-code">#SH-2026-0000</div>
+      <button class="btn-primary" id="close-order-btn" type="button" style="width: 100%; justify-content: center;">Alışverişe Devam Et</button>
+    </div>
+  </div>
+
+  <!-- Sipariş Geçmişi Penceresi -->
+  <div class="modal" id="orders-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card checkout-modal-card modal-scrollable">
+      <button class="close-btn modal-close" id="close-orders-btn" type="button" aria-label="Pencereyi kapat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="checkout-header">
+        <span class="eyebrow">HESABIM</span>
+        <h3>Sipariş Geçmişim</h3>
+      </div>
+      <div class="orders-list" id="orders-list"></div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
